@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OIO</title>
+</head>
+<style>
+    .main{width: 60%;margin: 0 auto;}
+    button{padding: 30px;background-color: green;color: white;}
+</style>
+<body>
+    <div class="main">
+        <button id="axBind">ax绑定</button>
+        <button id="axUnbind">ax解绑</button>
+        <button id="axbBind">axb绑定</button>
+        <button id="axbUnBind">axb解绑</button>
+        <button id="axybBind">axyb绑定</button>
+        <button id="axybUnBind">axyb解绑</button>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="md5.min.js"></script>
+<script src="script.js"></script>
+<script>
+$(function() {
+    $("#axBind").on("click",function(){
+        OIO.axBind({
+                "acms": "",
+                "appkey": "hwh",
+                "cardno": "111111",
+                "cardtype": "1",
+                "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                "msgtype": "subreq",
+                "name": "水杉",
+                "producttype": "2",
+                "prtms": "13552732093",
+                "service": "acbss",
+                "rsvd": "0",
+                "subts": "20170622162905",
+                "ts": "20170622162905922",
+                "ver": "1.0"
+            })
+    })
+
+})
+</script>
+</html>
