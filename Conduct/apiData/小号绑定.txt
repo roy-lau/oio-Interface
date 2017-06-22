@@ -1,0 +1,46 @@
+AX½â°ó
+  inmap.put("ver", "1.0");
+			  inmap.put("msgid",msgid);
+			  inmap.put("ts", ts);
+			  inmap.put("service", "acbss");
+			  inmap.put("msgtype", "unsubreq");
+			  inmap.put("appkey","hwh");
+			  inmap.put("prtms","18642276666");
+			  inmap.put("rsvd","0");
+			  inmap.put("acms","13084973364");
+			  inmap.put("unsubts",unsubts); 
+AXB°ó¶¨
+ inmap.put("ver", "1.0");
+	  inmap.put("msgid",msgid);
+	  inmap.put("ts", ts);
+	  inmap.put("service", "acbss");
+	  inmap.put("msgtype", "axbsubreq");
+	  inmap.put("appkey","GZAXB");
+	  inmap.put("prtms","15037900958");
+	  inmap.put("rsvd","0");
+	  inmap.put("unsubts", "20170302200300");
+	  inmap.put("unsubmethod", "0");
+//	  inmap.put("acms","");
+	  inmap.put("otherms","13911677275");
+	  inmap.put("subts",subts);
+	  inmap.put("producttype","13"); 
+	  inmap.put("productcat","11");
+	  inmap.put("name","123");
+	  inmap.put("cardtype","1");
+	  inmap.put("cardno","5566");
+	  inmap.put("callrecording","1");
+AXB½â°ó
+  inmap.put("ver", "1.0");
+			  inmap.put("msgid",msgid);
+			  inmap.put("ts", ts);
+			  inmap.put("service", "acbss");
+			  inmap.put("msgtype", "axbunsubreq");
+			  inmap.put("appkey","sanhaonet");
+//			  inmap.put("rsvd","0");
+			  inmap.put("prtms","18510147291");
+			  inmap.put("subid","7a954b8f9966446191af59bde7ad0c4d");
+			  inmap.put("rsvd","0");
+			  inmap.put("acms","13100401439");
+			  inmap.put("productcat","11");
+			  inmap.put("otherms", "18600699809");
+			  inmap.put("unsubts",unsubts); 
