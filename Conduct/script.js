@@ -5,7 +5,7 @@
         Verification: function(parm, title) {
             // 判断参数(parm)为是否空
             if (parm && parm !== '') {
-                this.LetterSort(parm, title)
+                this.extend(parm, title)
             } else {
                 // 如果没有参数，则返回null
                 return null;
@@ -13,8 +13,12 @@
         },
         // 揉入一些默认参数(减少外部传入的参数冗余)
         extend: function(parm, title){
-        	var default = {}
-        	var json = $.extend(default,parm)
+        	var Default = {
+                "subts": "20170622162905",
+                "ts": "20170622162905922",
+                "ver": "1.0",
+                };
+        	var json = $.extend(Default,parm);
         	this.LetterSort(json,title); // 调用排序
         },
         // 字母排序
@@ -50,7 +54,8 @@
             this.post(json);
         },
         // 发送数据
-        post: function() {
+        post: function(json) {
+            console.log(json)
             $.ajax({
                 url: "http://101.201.101.70:5000/",
                 data: JSON.stringify(json),
