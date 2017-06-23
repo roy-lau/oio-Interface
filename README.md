@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 									
 										号外号 小号 js接口
 
@@ -10,3 +11,7 @@
 ## <a name="xUnBind" /> ax解绑
 ## <a name="axbBind" /> axb绑定
 ## <a name="axbUnBind" /> axb解绑
+=======
+
+                                                        号外号小号接口
+>>>>>>> c6587b61115d539e3b0778310d9c4dbe8b2e1409
