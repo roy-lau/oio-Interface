@@ -15,104 +15,23 @@
         <input type="text">
         <input type="button" value="test发送" id="post">
     </form>
-    <button onclick="this.setAttribute('class','on' )">测试</button>
-    <button onclick="this.setAttribute('class','on' )">测试</button>
-    <button onclick="this.setAttribute('class','on' )">测试</button>
+    <button onclick="test()">测试</button>
+    <button onclick="test()">测试</button>
+    <button onclick="test()">测试</button>
 </body>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<!-- <script src="md5.js"></script> -->
+<script src="md5.min.js"></script>
+<script src="script.js"></script>
 <script>
 $(function() {
 
-    function c(tt){
-        alert(0)
-        tt.addClass("on")
+    $("#post").click(function (){
+
+        OIO.post()
+    })
+    function o(con){
+        console.log(con)
     }
-
-
-
-
-
-
-
-    (function(){
-        return OIO = {
-            tmp:function(){
-                return 1
-            }
-        }
-
-    })()
-    var a = OIO.tmp()
-    console.log(a)
-
-    function bar(fn){
-        fn(0)
-    }
-    function fn(i){
-        console.log(i)
-    }
-    bar(fn)
-    // var values ={'msgid': '11111111111111', // 消息ID
-    //     'sid': '9999999999',       // 签名
-    //     'cardno': '222',           // 身份证号码
-    //     'productcat': '11',        // 产品类别（0： 保留。实际分配给AX(AC小号) 11：AXB 12: 语音验证业务 13：AXYB业务的XYB ）
-    //     'ts': '1486458093',        // 时间戳
-    //     'msgtype': 'axbsubreq',    // 消息类型
-    //    // B--------------被叫号码
-    //    // 'otherms': '18601976151',//籍扬
-    //    // 'otherms': '15037900958',//郑海龙
-    //    // 'otherms': '13521204302',//李总
-    //     'otherms': '18267597127',  //李新惠
-    //    // 'otherms': '15806130891',//李
-    //    // 'otherms': '13075510807',
-    //    // 'otherms': '15618375271',
-    //    // 'otherms': '13269673885',
-    //    // 'otherms':'13611292289',
-    //    // 'otherms':'4008205555',
-    //     'ver': '1.0',                  // 版本号
-    //    // 'appkey': 'rrcar',
-    //     'appkey': 'GZAXB',         // 应用标识
-    //    // 'appkey':'hwh',
-    //     'cardtype': '1',           // 证件类型（证件类型）
-    //     'rsvd': '',                // 保留字段
-    //     'name': 'aaabbb',
-    //     'service': 'acbss',        // 业务类型
-    //     'producttype': '3',        // 订购类型 (0：包年 1：包季 2：包月 3：按次 4：体验 )
-    //     "callrestrict": "1",
-    //    // --------主叫号码（prtms---A）
-    //     'prtms': '13526636962',    //刘强
-    //    // 'prtms': '15037900958',  //李新惠
-    //    // 'prtms': '13810326774',  //张剑锋
-    //    // 'prtms': '18601976151',  //籍扬
-    //    // 'prtms':'15037900958',
-    //    // 'acms': '13167180461',
-    //     'acms': '',                   // 隐私号码(X号码，动态分配)
-    //     "unsubts":"20170616013030",   // 退订时间
-    //     'unsubmethod': '0',           // 自动退订方式（0：振铃退订 1：挂机退订）
-    //     "callrecording":"1",          // 录音控制（0：不开通录音功能 ， 1：开通录音功能）
-    //     "calldisplay":"0,1"           // 来电显示
-    //     }
-
-    // $("#post").click(function(){
-    //         $.ajax({
-    //             url : "http://101.200.221.216:80/",
-    //             type : "GET",
-    //             data : values,
-    //             dataType : "jsonp",
-    //             success: function(res){
-    //                 alert("success")
-    //                 console.log(res)
-    //             },
-    //             error: function(res, textStatus, errorThrown) {
-    //                 alert("error")
-    //                      console.log(res.status);
-    //                      console.log(res.readyState);
-    //                      console.log(textStatus);
-    //             }
-    //         })
-    // })
-
 })
 </script>
 </html>
