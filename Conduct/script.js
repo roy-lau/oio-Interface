@@ -74,17 +74,20 @@
         },
         interface: function(json, callback) {
             var self = this;
-            switch (json.service) {
-                case "acbss":
+            switch (json.mudel) {
+                case "ax":
                     var title = "L9HASRNCM0IQ" // ax头部信息
+                    delete json.mudel;
                     self.Verification(json, title, callback) // 验证传来的数据
                     break;
-                case "acbs":
+                case "axb":
                     var title = "L9HASRNCM0IQ" // 头部信息
+                    delete json.mudel;
                     self.Verification(json, title, callback) // 验证传来的数据
                     break;
-                case "acbs":
-                    var title = "L9HASRNCM0IQ" // 头部信息
+                case "axyb":
+                    var title = "+ZOLLJ/EFIQEVIWM" // 头部信息
+                    delete json.mudel;
                     self.Verification(json, title, callback) // 验证传来的数据
                     break;
             }

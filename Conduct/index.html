@@ -44,9 +44,9 @@ input {
             <button id="axBind">ax绑定</button>
         </div>
         <div class="block fl">
-            <input type="text" id="axUnbindPrtms" placeholder="真实号">
-            <input type="text" id="axUnbindAcms" placeholder="隐私号">
-            <button id="axUnbind">ax解绑</button>
+            <input type="text" id="axUnBindPrtms" placeholder="真实号">
+            <input type="text" id="axUnBindAcms" placeholder="隐私号">
+            <button id="axUnBind">ax解绑</button>
         </div>
         <div class="block fl">
             <input type="text" id="axQueryPrtms" placeholder="真实号">
@@ -64,23 +64,26 @@ input {
     <!-- AXB模式 ————start -->
     <div class="axb-block">
         <div class="block fl">
-            <input type="text" id="axbBindPrtms" placeholder="真实号">
+            <input type="text" id="axbBindPrtms" placeholder="真实号-A">
+            <input type="text" id="axbBindOtherms" placeholder="真实号-B">
             <button id="axbBind">axb绑定</button>
         </div>
         <div class="block fl">
-            <input type="text" id="axbUnbindPrtms" placeholder="真实号">
-            <input type="text" id="axbUnbindAcms" placeholder="隐私号">
-            <button id="axbUnbind">axb解绑</button>
+            <input type="text" id="axbUnBindPrtms" placeholder="真实号-A">
+            <input type="text" id="axbUnBindOtherms" placeholder="真实号-B">
+            <input type="text" id="axbUnBindAcms" placeholder="隐私号">
+            <button id="axbUnBind">axb解绑</button>
         </div>
         <div class="block fl">
-            <input type="text" id="axbQueryPrtms" placeholder="真实号">
+            <input type="text" id="axbQueryPrtms" placeholder="真实号-A">
+            <input type="text" id="axbQueryOtherms" placeholder="真实号-B">
             <input type="text" id="axbQueryAcms" placeholder="隐私号">
             <button id="axbQuery">axb查询</button>
         </div>
         <div class="block fl">
+            <input type="text" id="axbCheangeOldprtms" placeholder="当前真实号码-A">
+            <input type="text" id="axbCheangeNewprtms" placeholder="变更的号码-B">
             <input type="text" id="axbCheangeAcms" placeholder="隐私号">
-            <input type="text" id="axbCheangeOldprtms" placeholder="当前真实号码">
-            <input type="text" id="axbCheangeNewprtms" placeholder="新的真实号码">
             <button id="axbCheangePrtms">axb更换真实号</button>
         </div>
     </div>
@@ -92,9 +95,9 @@ input {
             <button id="axybBind">axyb绑定</button>
         </div>
         <div class="block fl">
-            <input type="text" id="axybUnbindPrtms" placeholder="真实号">
-            <input type="text" id="axybUnbindAcms" placeholder="隐私号">
-            <button id="axybUnbind">axyb解绑</button>
+            <input type="text" id="axybUnBindPrtms" placeholder="真实号">
+            <input type="text" id="axybUnBindAcms" placeholder="隐私号">
+            <button id="axybUnBind">axyb解绑</button>
         </div>
         <div class="block fl">
             <input type="text" id="axybQueryPrtms" placeholder="真实号">
@@ -119,6 +122,7 @@ $(function() {
         // ax绑定
     $("#axBind").on("click", function() {
         OIO.interface({
+            "mudel":"ax",
             "acms": "",
             "appkey": "hwh",
             "cardno": "111111",
@@ -137,24 +141,25 @@ $(function() {
     })
 
     // ax解绑
-    $("#axUnbind").on("click", function() {
+    $("#axUnBind").on("click", function() {
             OIO.interface({
+                "mudel":"ax",
                 "msgid": "b52179d301224f0e893d4ba418ea2d0c",
                 "ts": "20170622162905922",
                 "service": "acbss",
                 "msgtype": "unsubreq",
                 "appkey": "hwh",
-                "prtms": $("#axUnbindPrtms").val(),
-                "acms": $("#axUnbindAcms").val(),
+                "prtms": $("#axUnBindPrtms").val(),
+                "acms": $("#axUnBindAcms").val(),
                 "unsubts": OIO.getTs(10)
             }, function callback(success, error) {
                 console.log(success, error)
             })
-
-        })
-        // ax查询
+    })
+    // ax查询
     $("#axQuery").on("click", function() {
             OIO.interface({
+                "mudel":"ax",
                 "msgid": "b52179d301224f0e893d4ba418ea2d0c",
                 "ts": "20170622162905922",
                 "service": "acbss",
@@ -166,11 +171,11 @@ $(function() {
             }, function callback(success, error) {
                 console.log(success, error)
             })
-
-        })
-        // ax更换真实号
+    })
+    // ax更换真实号
     $("#axCheangePrtms").on("click", function() {
-        OIO.axUnBind({
+        OIO.interface({
+            "mudel":"ax",
             "msgid": "b52179d301224f0e893d4ba418ea2d0c",
             "ts": "20170622162905922",
             "service": "acbss",
@@ -183,10 +188,85 @@ $(function() {
         }, function callback(success, error) {
             console.log(success, error)
         })
-
     })
-
-
+    // axb 绑定
+    $("#axbBind").on("click",function(){
+        OIO.interface({
+            "mudel":"axb",
+            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+            "ts": OIO.getTs(0),
+            "service": "acbss",
+            "msgtype": "axbsubreq",
+            "prtms": $("#axbBindPrtms").val(),
+	    "appkey": "hwh",
+            "unsubmethod": "0",
+            "acms":"",
+            "otherms": $("#axbBindOtherms").val(),
+            "subts": OIO.getTs(0),
+            "producttype": "3",
+            "productcat": "11",
+            "name": "axbBind",
+            "cardtype": "1",
+            "cardno": "5566",
+            "callrecording": "1"
+        },function callback(success, error){
+             console.log(success, error)
+        })
+    })
+    // axb 解绑
+    $("#axbUnBind").on("click",function(){
+        OIO.interface({
+            "mudel":"axb",
+            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+            "ts": OIO.getTs(0),
+            "service": "acbss",
+            "msgtype": "axbunsubreq",
+            "appkey": "hwh",
+            "prtms": $("#axbUnBindPrtms").val(), // --A
+            "subid": "7a954b8f9966446191af59bde7ad0c4d",
+            "acms": $("#axbUnBindAcms").val(),  // --X
+            "productcat": "11",
+            "otherms": $("#axbUnBindOtherms").val(),  // --B
+            "unsubts": OIO.getTs(10)
+        },function callback(success, error){
+             console.log(success, error)
+        })
+    })
+    // axb 查询
+    $("#axbQuery").on("click",function(){
+        OIO.interface({
+            "mudel":"axb",
+            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+            "ts": OIO.getTs(0),
+            "service": "acbss",
+            "msgtype": "axbsubqryreq",
+            "appkey": "hwh",
+            "prtms": $("#axbQueryPrtms").val(), // --A
+            "acms": $("#axbQueryAcms").val(),  // --X
+            "otherms": $("#axbQueryOtherms").val(),  // --B
+        },function callback(success, error){
+             console.log(success, error)
+        })
+    })
+    // axb 修改
+    $("#axbCheangePrtms").on("click",function(){
+        OIO.interface({
+            "mudel":"axb",
+            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+            "ts": OIO.getTs(0),
+            "service": "acbss",
+            "msgtype": "Axbsubupdreq",
+            "appkey": "hwh",
+            "prtms": $("#axbCheangeOldprtms").val(), // --A
+            "subid": "7a954b8f9966446191af59bde7ad0c4d",
+            "acms": $("#axbCheangeAcms").val(),  // --X
+            "otherms": $("#axbCheangeNewprtms").val(),  // --B
+            "subts": OIO.getTs(10),
+            "productcat": "11",
+        },function callback(success, error){
+             console.log(success, error)
+        })
+    })
 })
 </script>
 
