@@ -73,7 +73,7 @@
         },
         interface: function(json, callback) {
             var self = this;
-            switch (json.mudel) {
+            switch (json.model) {
                 case "ax":
                     var title = "L9HASRNCM0IQ" // ax头部信息
                     delete json.mudel;
@@ -89,6 +89,8 @@
                     delete json.mudel;
                     self.Verification(json, title, callback) // 验证传来的数据
                     break;
+                default:
+                    alert("请传入正确的模式")
             }
         },
         // 获取时间戳

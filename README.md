@@ -1,37 +1,44 @@
 									
-										号外号 小号 js接口
+								号外号 小号 js接口
 
-* [AX 模式](#AX)
-	* [ax绑定](#axBind)
-	* [ax解绑](#axUnBind)
-	* [ax查询](#axQuery)
-	* [ax修改](#axCheange)
-* [AXB 模式](#AXB)
-	* [axb绑定](#axbBind)
-	* [axb解绑](#axbUnBind)
-	* [axb查询](#axbQuery)
-	* [axb修改](#axbCheange)
-* [AXYB 模式](#AXB)
-	* [axyb绑定](#axybBind)
-	* [axyb解绑](#axybUnBind)
-	* [axyb查询](#axybQuery)
-	* [axyb修改](#axybCheange)
-
-##  <a name="AX" />AX 模式
-### <a name="axBind" />AX 绑定
-### <a name="axUnBind" />AX 解绑
-### <a name="axQuery" />AX 查询
-### <a name="axCheange" />AX 修改
+* [前言](#Preface)
+* [调用方法](#function)
+* [参数解释json](#parameter-json)
+* [参数解释callback](#parameter-callback)
+* [DEMO](#demo)
 
 
-##  <a name="AXB" />AXB 模式
-### <a name="axbBind" />AXB 绑定
-### <a name="axbUnBind" />AXB 解绑
-### <a name="axbQuery" />AXB 查询
-### <a name="axbCheange" />AXB 修改
+## <a name="Preface">讲在前面
+> 具体传入参数请详细阅读 <a href="">[号外号ACI接口协议V2.00.00.pdf]</a>
 
-##  <a name="AXYB" />AXYB 模式
-### <a name="axybBind" />AXYB 绑定
-### <a name="axybUnBind" />AXYB 解绑
-### <a name="axybQuery" />AXYB 查询
-### <a name="axybCheange" />AXYB 修改
+### <a name="function">号外号js函数调用方法：
+
+```javascript
+	OIO.interface(json,callback)
+```
+
+* <a name="parameter-json">参数解释 -- json： 
+ 
+ 	1、 传入json格式的字段，具体字段请详细阅读 <a href="">[号外号ACI接口协议V2.00.00.pdf]</a>
+	2、 函数内封装了三个字段 `rsvd` `ver` `sid`，调用时不用传入
+	3、 json需要传入一个 `model` 字段, 此字段有三个参数 `ax`, `axb`, `axyb`,分别对应不同的模式
+	4、 由于传入的json中需要时间戳 `ts` ，插件内封装了OIO.getTs()函数
+
+	OIO.getTs()函数使用方法：
+		`OIO.getTs(0)  // 当前时间戳`
+		`OIO.getTs(100)  // 当前时间戳加100ms`
+ 	
+
+* <a name="parameter-callback">参数解释 -- 回调函数（callback）：
+
+	1、 回调函数接收两个参数
+		`data` : 后台返回的数据
+		`state` : 状态(success:发送成功，error:发送失败)
+	2、 例：
+		function callback(data,state){   // 函数名可以自定义
+			console.log(data,state)
+		}
+
+#### <a name="demo">DEMO (仅供参考)
+
+	 http://101.201.101.70:5000/
