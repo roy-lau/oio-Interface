@@ -17,7 +17,7 @@
 	OIO.interface(json,callback)
 ```
 
-* <a name="parameter-json">参数解释 -- json： 
+#### <a name="parameter-json">参数解释 -- json： 
  
  1、 传入json格式的字段，具体字段请详细阅读 <a href="https://github.com/roy-lau/oio-Interface/blob/master/api/%E5%8F%B7%E5%A4%96%E5%8F%B7ACI%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AEV2.00.00.pdf">[号外号ACI接口协议V2.00.00.pdf]</a> 
  
@@ -29,15 +29,15 @@
 
 OIO.getTs()函数使用方法：
 
-     OIO.getTs(0)  // 当前时间戳
-     OIO.getTs(100)  // 当前时间戳加100ms
+     OIO.getTs(0)  // 当前时间戳
+     OIO.getTs(100)  // 当前时间戳加100ms
 
 
-* <a name="parameter-callback">参数解释 -- 回调函数（callback）：
+#### <a name="parameter-callback">参数解释 -- 回调函数（callback）：
 
 1、 回调函数接收两个参数
 
-   `data` : 后台返回的数据
+   `data` : 后台返回的数据 <br />
    `state` : 状态(success:发送成功，error:发送失败)
    
 2、 例：
