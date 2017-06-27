@@ -2,7 +2,7 @@
     "use scrict"
     return OIO = {
         // 验证传来的数据
-        Verification: function(parm, title,callback) {
+        Verification: function(parm, title, callback) {
             // 判断参数(parm)为是否空
             if (parm && parm !== '') {
                 this.extend(parm, title,callback)
@@ -17,19 +17,11 @@
                 "rsvd": "0",
                 "ver": "1.0",
             };
-            var json = $.extend(Default, parm);
-            this.LetterSort(json, title,callback); // 调用排序
-        },
-        // 字母排序
-        LetterSort: function(oldJson, title,callback) {
-            var newJson = {};
-            Object.keys(oldJson).sort().forEach(function(item) {
-                newJson[item] = oldJson[item]
-            })
-            this.autograph(newJson, title,callback) // 调用签名
+            var mergeJson = $.extend(Default, parm);
+            this.autograph(mergeJson, title,callback); // 调用排序
         },
         // 签名
-        autograph: function(sortJson, title,callback) {
+        autograph: function(mergeJson, title, callback) {
             /*
             签名算法如下：
                 1、将json的key值按字母排序
@@ -40,14 +32,19 @@
                 6、转换为大写
                 7、转换为16进制
             */
+            var sortJson = {};
+            Object.keys(mergeJson).sort().forEach(function(item) { // 字母排序&&转字符串&&转小写
+                sortJson[item] = mergeJson[item].toString().toLowerCase()
+            });
+
             var autograph = md5(title + JSON.stringify(sortJson)
                     .replace(/\:|\,|\"|\'|\{|\}/g, ""))
-                .toUpperCase()
-                .toString(16)
+                    .toUpperCase()
+                    .toString(16)
             this.AddSid(autograph, sortJson,callback)
         },
         // 添加签名(sid)
-        AddSid: function(autograph, json,callback) {
+        AddSid: function(autograph, json, callback) {
             json.sid = autograph;
             // 传给post
             this.post(json,callback);
@@ -55,7 +52,7 @@
         // 发送数据
         post: function(json,callback) {
             var self = this;
-            console.log(json)
+            console.log(JSON.stringify(json))
             $.ajax({
                 url: "http://101.201.101.70:5000/",
                 data: JSON.stringify(json),
