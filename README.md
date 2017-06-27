@@ -29,8 +29,8 @@
 
 OIO.getTs()函数使用方法：
 
-     OIO.getTs(0)  // 当前时间戳
-     OIO.getTs(100)  // 当前时间戳加100ms
+	     OIO.getTs(0)  // 当前时间戳
+	     OIO.getTs(100)  // 当前时间戳加100ms
 
 
 #### <a name="parameter-callback">参数解释 -- 回调函数（callback）：
