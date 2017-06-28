@@ -26,7 +26,7 @@
 
 #### <a name="parameter-json">参数解释 -- json： 
  
- 1、 传入json格式的字段，具体字段请详细阅读 [号外号ACI接口协议V2.00.00.pdf](https://github.com/roy-lau/oio-Interface/blob/master/api/%E5%8F%B7%E5%A4%96%E5%8F%B7ACI%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AEV2.00.00.pdf)
+ 1、 传入json格式的字段，具体字段请详细阅读 [号外号ACI接口协议V2.00.00.pdf](https://github.com/roy-lau/oio-Interface/raw/master/api/%E5%8F%B7%E5%A4%96%E5%8F%B7ACI%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AEV2.00.00.pdf)
  
  2、 函数内封装了三个字段 `rsvd` `ver` `sid`，调用时不用传入 
  
