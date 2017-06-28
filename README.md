@@ -12,7 +12,8 @@
 
 ### <a name="Preface">讲在前面
 > 具体传入参数请详细阅读 <a href="https://github.com/roy-lau/oio-Interface/blob/master/api/%E5%8F%B7%E5%A4%96%E5%8F%B7ACI%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AEV2.00.00.pdf">[号外号ACI接口协议V2.00.00.pdf]</a>
-> 需要引入两个框架 `jQuery` `MD5`
+
+> 需要引入`MD5`框架
 
 ### <a name="function">号外号js函数调用方法：
 

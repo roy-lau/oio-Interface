@@ -118,188 +118,188 @@
 <script src="md5.min.js"></script>
 <script src="script.js"></script>
 <script>
-$(function() {
-    // ax绑定
-    $("#axBind").on("click", function() {
-        OIO.interface({
-            "model":"ax",
-            "acms": "",
-            "appkey": "hwh",
-            "cardno": "111111",
-            "cardtype": "1",
-            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-            "msgtype": "subreq",
-            "name": "水杉",
-            "producttype": "2",
-            "prtms": $("#axBindPrtms").val(),
-            "service": "acbss",
-            "subts": "20170622162905",
-            "ts": "20170622162905922"
-        }, function callback(data, state) {
-            if (data.result == "200") {
-                var ax_a = $("#axBindPrtms").val();
-                var ax_x = data.acms;
-                // 自动放入 --ax解绑
-                $("#axUnBindPrtms").val(ax_a);
-                $("#axUnBindAcms").val(ax_x);
+    $(function() {
+        // ax绑定
+        $("#axBind").on("click", function() {
+            OIO.interface({
+                "model":"ax",
+                "acms": "",
+                "appkey": "hwh",
+                "cardno": "111111",
+                "cardtype": "1",
+                "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                "msgtype": "subreq",
+                "name": "水杉",
+                "producttype": "2",
+                "prtms": $("#axBindPrtms").val(),
+                "service": "acbss",
+                "subts": "20170622162905",
+                "ts": "20170622162905922"
+            }, function callback(data, state) {
+                if (data.result == "200") {
+                    var ax_a = $("#axBindPrtms").val();
+                    var ax_x = data.acms;
+                    // 自动放入 --ax解绑
+                    $("#axUnBindPrtms").val(ax_a);
+                    $("#axUnBindAcms").val(ax_x);
 
-                // 自动放入 --ax查询
-                $("#axQueryPrtms").val(ax_a);
-                $("#axQueryAcms").val(ax_x);
+                    // 自动放入 --ax查询
+                    $("#axQueryPrtms").val(ax_a);
+                    $("#axQueryAcms").val(ax_x);
 
-                // 自动放入 --ax变更
-                $("#axCheangeAcms").val(ax_a);
-                $("#axCheangeOldprtms").val(ax_x);
-            }
-            console.log(data, state)
+                    // 自动放入 --ax变更
+                    $("#axCheangeAcms").val(ax_a);
+                    $("#axCheangeOldprtms").val(ax_x);
+                }
+                console.log(data, state)
+            })
         })
-    })
 
-    // ax解绑
-    $("#axUnBind").on("click", function() {
+        // ax解绑
+        $("#axUnBind").on("click", function() {
+                OIO.interface({
+                    "model":"ax",
+                    "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                    "ts": "20170622162905922",
+                    "service": "acbss",
+                    "msgtype": "unsubreq",
+                    "appkey": "hwh",
+                    "prtms": $("#axUnBindPrtms").val(),
+                    "acms": $("#axUnBindAcms").val(),
+                    "unsubts": OIO.getTs(10)
+                }, function callback(data, state) {
+                    console.log(data, state)
+                })
+        })
+        // ax查询
+        $("#axQuery").on("click", function() {
+                OIO.interface({
+                    "model":"ax",
+                    "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                    "ts": "20170622162905922",
+                    "service": "acbss",
+                    "msgtype": "subqryreq",
+                    "appkey": "hwh",
+                    "prtms": $("#axQueryPrtms").val(),
+                    "acms": $("#axQueryAcms").val(),
+                    "unsubts": OIO.getTs(10)
+                }, function callback(data, state) {
+                    console.log(data, state)
+                })
+        })
+        // ax更换真实号
+        $("#axCheangePrtms").on("click", function() {
             OIO.interface({
                 "model":"ax",
                 "msgid": "b52179d301224f0e893d4ba418ea2d0c",
                 "ts": "20170622162905922",
                 "service": "acbss",
-                "msgtype": "unsubreq",
+                "msgtype": "chgprtmsreq",
                 "appkey": "hwh",
-                "prtms": $("#axUnBindPrtms").val(),
-                "acms": $("#axUnBindAcms").val(),
-                "unsubts": OIO.getTs(10)
+                "acms": $("#axCheangeAcms").val(),
+                "oldprtms": $("#axCheangeOldprtms").val(),
+                "newprtms": $("#axCheangeNewprtms").val(),
+                "chgts": OIO.getTs(0)
             }, function callback(data, state) {
                 console.log(data, state)
             })
-    })
-    // ax查询
-    $("#axQuery").on("click", function() {
+        })
+        // axb 绑定
+        $("#axbBind").on("click",function(){
             OIO.interface({
-                "model":"ax",
+                "model":"axb",
                 "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-                "ts": "20170622162905922",
+                "ts": OIO.getTs(0),
                 "service": "acbss",
-                "msgtype": "subqryreq",
-                "appkey": "hwh",
-                "prtms": $("#axQueryPrtms").val(),
-                "acms": $("#axQueryAcms").val(),
-                "unsubts": OIO.getTs(10)
-            }, function callback(data, state) {
-                console.log(data, state)
+                "msgtype": "axbsubreq",
+                "prtms": $("#axbBindPrtms").val(),
+        	    "appkey": "hwh",
+                "unsubmethod": "0",
+                "acms":"",
+                "otherms": $("#axbBindOtherms").val(),
+                "subts": OIO.getTs(0),
+                "producttype": "3",
+                "productcat": "11",
+                "name": "axbBind",
+                "cardtype": "1",
+                "cardno": "5566",
+                "callrecording": "1"
+            },function callback(data, state){
+                if (data.result == "200") {
+                    var axyb_a =  $("#axbBindPrtms").val();
+                    var axyb_x =  data.acms;
+                    var axyb_b =  $("#axbBindOtherms").val();
+                    // 自动放入 --解绑
+                    $("#axbUnBindPrtms").val(axyb_a)
+                    $("#axbUnBindOtherms").val(axyb_b)
+                    $("#axbUnBindAcms").val(axyb_x)
+                    // 自动放入 --查询
+                    $("#axbQueryPrtms").val(axyb_a)
+                    $("#axbQueryAcms").val(axyb_b)
+                    $("#axbQueryOtherms").val(axyb_x)
+                    // 自动放入 --修改
+                    $("#axbCheangeOldprtms").val(axyb_a), // --A
+                    $("#axbCheangeAcms").val(axyb_x),  // --X
+                    $("#axbCheangeSubid").val(data.subid)
+                }
+                 console.log(data, state)
             })
-    })
-    // ax更换真实号
-    $("#axCheangePrtms").on("click", function() {
-        OIO.interface({
-            "model":"ax",
-            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-            "ts": "20170622162905922",
-            "service": "acbss",
-            "msgtype": "chgprtmsreq",
-            "appkey": "hwh",
-            "acms": $("#axCheangeAcms").val(),
-            "oldprtms": $("#axCheangeOldprtms").val(),
-            "newprtms": $("#axCheangeNewprtms").val(),
-            "chgts": OIO.getTs(0)
-        }, function callback(data, state) {
-            console.log(data, state)
+        })
+        // axb 解绑
+        $("#axbUnBind").on("click",function(){
+            OIO.interface({
+                "model":"axb",
+                "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                "ts": OIO.getTs(0),
+                "service": "acbss",
+                "msgtype": "axbunsubreq",
+                "appkey": "hwh",
+                "prtms": $("#axbUnBindPrtms").val(), // --A
+                "subid": "7a954b8f9966446191af59bde7ad0c4d",
+                "acms": $("#axbUnBindAcms").val(),  // --X
+                "productcat": "11",
+                "otherms": $("#axbUnBindOtherms").val(),  // --B
+                "unsubts": OIO.getTs(10)
+            },function callback(data, state){
+                 console.log(data, state)
+            })
+        })
+        // axb 查询
+        $("#axbQuery").on("click",function(){
+            OIO.interface({
+                "model":"axb",
+                "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                "ts": OIO.getTs(0),
+                "service": "acbss",
+                "msgtype": "axbsubqryreq",
+                "appkey": "hwh",
+                "prtms": $("#axbQueryPrtms").val(), // --A
+                "acms": $("#axbQueryAcms").val(),  // --X
+                "otherms": $("#axbQueryOtherms").val(),  // --B
+            },function callback(data, state){
+                 console.log(data, state)
+            })
+        })
+        // axb 修改
+        $("#axbCheangePrtms").on("click",function(){
+            OIO.interface({
+                "model":"axb",
+                "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                "ts": OIO.getTs(0),
+                "service": "acbss",
+                "msgtype": "axbsubupdreq",
+                "appkey": "hwh",
+                "prtms": $("#axbCheangeOldprtms").val(), // --A
+                "subid": $("#axbCheangeSubid").val(), // --subid
+                "acms": $("#axbCheangeAcms").val(),  // --X
+                "otherms": $("#axbCheangeNewprtms").val(),  // --B
+                "subts": OIO.getTs(10),
+                "productcat": "11",
+            },function callback(data, state){
+                 console.log(data, state)
+            })
         })
     })
-    // axb 绑定
-    $("#axbBind").on("click",function(){
-        OIO.interface({
-            "model":"axb",
-            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-            "ts": OIO.getTs(0),
-            "service": "acbss",
-            "msgtype": "axbsubreq",
-            "prtms": $("#axbBindPrtms").val(),
-    	    "appkey": "hwh",
-            "unsubmethod": "0",
-            "acms":"",
-            "otherms": $("#axbBindOtherms").val(),
-            "subts": OIO.getTs(0),
-            "producttype": "3",
-            "productcat": "11",
-            "name": "axbBind",
-            "cardtype": "1",
-            "cardno": "5566",
-            "callrecording": "1"
-        },function callback(data, state){
-            if (data.result == "200") {
-                var axyb_a =  $("#axbBindPrtms").val();
-                var axyb_x =  data.acms;
-                var axyb_b =  $("#axbBindOtherms").val();
-                // 自动放入 --解绑
-                $("#axbUnBindPrtms").val(axyb_a)
-                $("#axbUnBindOtherms").val(axyb_b)
-                $("#axbUnBindAcms").val(axyb_x)
-                // 自动放入 --查询
-                $("#axbQueryPrtms").val(axyb_a)
-                $("#axbQueryAcms").val(axyb_b)
-                $("#axbQueryOtherms").val(axyb_x)
-                // 自动放入 --修改
-                $("#axbCheangeOldprtms").val(axyb_a), // --A
-                $("#axbCheangeAcms").val(axyb_x),  // --X
-                $("#axbCheangeSubid").val(data.subid)
-            }
-             console.log(data, state)
-        })
-    })
-    // axb 解绑
-    $("#axbUnBind").on("click",function(){
-        OIO.interface({
-            "model":"axb",
-            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-            "ts": OIO.getTs(0),
-            "service": "acbss",
-            "msgtype": "axbunsubreq",
-            "appkey": "hwh",
-            "prtms": $("#axbUnBindPrtms").val(), // --A
-            "subid": "7a954b8f9966446191af59bde7ad0c4d",
-            "acms": $("#axbUnBindAcms").val(),  // --X
-            "productcat": "11",
-            "otherms": $("#axbUnBindOtherms").val(),  // --B
-            "unsubts": OIO.getTs(10)
-        },function callback(data, state){
-             console.log(data, state)
-        })
-    })
-    // axb 查询
-    $("#axbQuery").on("click",function(){
-        OIO.interface({
-            "model":"axb",
-            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-            "ts": OIO.getTs(0),
-            "service": "acbss",
-            "msgtype": "axbsubqryreq",
-            "appkey": "hwh",
-            "prtms": $("#axbQueryPrtms").val(), // --A
-            "acms": $("#axbQueryAcms").val(),  // --X
-            "otherms": $("#axbQueryOtherms").val(),  // --B
-        },function callback(data, state){
-             console.log(data, state)
-        })
-    })
-    // axb 修改
-    $("#axbCheangePrtms").on("click",function(){
-        OIO.interface({
-            "model":"axb",
-            "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-            "ts": OIO.getTs(0),
-            "service": "acbss",
-            "msgtype": "axbsubupdreq",
-            "appkey": "hwh",
-            "prtms": $("#axbCheangeOldprtms").val(), // --A
-            "subid": $("#axbCheangeSubid").val(), // --subid
-            "acms": $("#axbCheangeAcms").val(),  // --X
-            "otherms": $("#axbCheangeNewprtms").val(),  // --B
-            "subts": OIO.getTs(10),
-            "productcat": "11",
-        },function callback(data, state){
-             console.log(data, state)
-        })
-    })
-})
 </script>
 
 </html>

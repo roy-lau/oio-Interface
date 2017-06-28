@@ -7,8 +7,8 @@
             if (parm && parm !== '') {
                 this.extend(parm, title,callback)
             } else {
-                // 如果没有参数，则返回null
-                return null;
+                // 如果没有参数
+                callback("传入参数不能为空！","error")
             }
         },
         // 揉入一些默认参数(减少外部传入的参数冗余)
