@@ -53,6 +53,8 @@
         post: function(json,callback) {
             var self = this;
             console.log(JSON.stringify(json))
+            // wx.request --- $ajax
+            // fail  --- error
             $.ajax({
                 url: "http://101.201.101.70:5000/",
                 data: JSON.stringify(json),

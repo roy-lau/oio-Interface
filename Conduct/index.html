@@ -37,7 +37,7 @@
 </style>
 
 <body>
-    <!-- AX模式 ————start -->
+    <!-- AX模式 ———— start -->
     <div class="ax-block">
         <div class="block fl">
             <input type="text" id="axBindPrtms" placeholder="真实号">
@@ -60,8 +60,8 @@
             <button id="axCheangePrtms">ax更换真实号</button>
         </div>
     </div>
-    <!-- AX模式 ————end -->
-    <!-- AXB模式 ————start -->
+    <!-- AX模式 ———— end -->
+    <!-- AXB模式 ———— start -->
     <div class="axb-block">
         <div class="block fl">
             <input type="text" id="axbBindPrtms" placeholder="真实号-A">
@@ -88,8 +88,8 @@
             <button id="axbCheangePrtms">axb更换真实号</button>
         </div>
     </div>
-    <!-- AXB模式 ————end -->
-    <!-- AXYB模式 ————start -->
+    <!-- AXB模式 ———— end -->
+    <!-- AXYB模式 ———— start -->
     <div class="axyb-block">
         <div class="block fl">
             <input type="text" id="axybBindPrtms" placeholder="真实号">
@@ -112,7 +112,7 @@
             <button id="axybCheangePrtms">axyb更换真实号</button>
         </div>
     </div>
-    <!-- AXYB模式 ————end -->
+    <!-- AXYB模式 ———— end -->
 </body>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="md5.min.js"></script>
@@ -157,23 +157,23 @@
 
         // ax解绑
         $("#axUnBind").on("click", function() {
-                OIO.interface({
-                    "model":"ax",
-                    "msgid": "b52179d301224f0e893d4ba418ea2d0c",
-                    "ts": "20170622162905922",
-                    "service": "acbss",
-                    "msgtype": "unsubreq",
-                    "appkey": "hwh",
-                    "prtms": $("#axUnBindPrtms").val(),
-                    "acms": $("#axUnBindAcms").val(),
-                    "unsubts": OIO.getTs(10)
-                }, function callback(data, state) {
-                    console.log(data, state)
-                })
+            OIO.interface({
+                "model":"ax",
+                "msgid": "b52179d301224f0e893d4ba418ea2d0c",
+                "ts": "20170622162905922",
+                "service": "acbss",
+                "msgtype": "unsubreq",
+                "appkey": "hwh",
+                "prtms": $("#axUnBindPrtms").val(),
+                "acms": $("#axUnBindAcms").val(),
+                "unsubts": OIO.getTs(10)
+            }, function callback(data, state) {
+                console.log(data, state)
+            })
         })
         // ax查询
         $("#axQuery").on("click", function() {
-                OIO.interface({
+            OIO.interface({
                     "model":"ax",
                     "msgid": "b52179d301224f0e893d4ba418ea2d0c",
                     "ts": "20170622162905922",
@@ -183,9 +183,9 @@
                     "prtms": $("#axQueryPrtms").val(),
                     "acms": $("#axQueryAcms").val(),
                     "unsubts": OIO.getTs(10)
-                }, function callback(data, state) {
-                    console.log(data, state)
-                })
+            }, function callback(data, state) {
+                console.log(data, state)
+            })
         })
         // ax更换真实号
         $("#axCheangePrtms").on("click", function() {
