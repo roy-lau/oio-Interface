@@ -1,5 +1,4 @@
-;
-(function() {
+;(function() {
     "use scrict"
     return OIO = {
         // 验证传来的数据

@@ -58,6 +58,8 @@ OIO.getTs()函数使用方法：
 	}
 ```
 
+#### [有问题可以在issues上跟我交流！](https://github.com/roy-lau/oio-Interface/issues)
+
 #### <a name="demo">DEMO (仅供参考)
 
 http://101.201.101.70:5000/
