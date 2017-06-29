@@ -1,24 +1,34 @@
-;(function($) {
+;
+(function() {
     "use scrict"
     return OIO = {
         // 验证传来的数据
         Verification: function(parm, title, callback) {
             // 判断参数(parm)为是否空
             if (parm && parm !== '') {
-                this.extend(parm, title,callback)
+                this.extend(parm, title, callback)
             } else {
                 // 如果没有参数
-                callback("传入参数不能为空！","error")
+                callback("传入参数不能为空！", "error")
             }
         },
         // 揉入一些默认参数(减少外部传入的参数冗余)
-        extend: function(parm, title,callback) {
+        extend: function(parm, title, callback) {
             var Default = {
                 "rsvd": "0",
                 "ver": "1.0",
             };
-            var mergeJson = $.extend(Default, parm);
-            this.autograph(mergeJson, title,callback); // 调用排序
+            var mergeJson = mixin(Default, parm);
+            // 简单的浅拷贝
+            function mixin(sourceObj, targetObj) {
+                for (var key in sourceObj) {
+                    if (!(key in targetObj)) {
+                        targetObj[key] = sourceObj[key];
+                    }
+                }
+                return targetObj;
+            }
+            this.autograph(mergeJson, title, callback); // 调用排序
         },
         // 签名
         autograph: function(mergeJson, title, callback) {
@@ -39,34 +49,34 @@
 
             var autograph = md5(title + JSON.stringify(sortJson)
                     .replace(/\:|\,|\"|\'|\{|\}/g, ""))
-                    .toUpperCase()
-                    .toString(16)
-            this.AddSid(autograph, sortJson,callback)
+                .toUpperCase()
+                .toString(16)
+            this.AddSid(autograph, sortJson, callback)
         },
         // 添加签名(sid)
         AddSid: function(autograph, json, callback) {
             json.sid = autograph;
             // 传给post
-            this.post(json,callback);
+            this.post(json, callback);
         },
         // 发送数据
-        post: function(json,callback) {
+        post: function(json, callback) {
             var self = this;
-            console.log(JSON.stringify(json))
-            // wx.request --- $ajax
-            // fail  --- error
+            console.log(json)
+                // wx.request --- $ajax
+                // fail  --- error
             $.ajax({
                 url: "http://101.201.101.70:5000/",
                 data: JSON.stringify(json),
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
-                success: function(res, data) {
+                success: function(res, state) {
                     alert("success")
-                    callback(res, data)
+                    callback(res, state)
                 },
-                error: function(res, data) {
-                    callback(res,data);
+                error: function(res, state) {
+                    callback(res, state);
                 }
             })
         },
@@ -108,4 +118,4 @@
         }
 
     }
-})(jQuery, md5)
+})(md5)
